@@ -134,7 +134,7 @@ resource "azurerm_function_app_flex_consumption" "function" {
 
 resource "azuread_application" "acmebot" {
   count        = var.enable_auth ? 1 : 0
-  display_name = "app-${local.function_app_name}"
+  display_name = "${local.function_app_name}-app"
 
   web {
     homepage_url = "https://${local.function_app_name}.azurewebsites.net/dashboard"
