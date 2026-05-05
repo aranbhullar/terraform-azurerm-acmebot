@@ -28,7 +28,7 @@ resource "azurerm_storage_container" "deployment" {
 }
 
 resource "azurerm_service_plan" "serverfarm" {
-  name                = "plan-${var.app_base_name}"
+  name                = "${var.app_base_name}-asp"
   resource_group_name = var.resource_group_name
   location            = var.location
   tags                = var.additional_tags
@@ -39,7 +39,7 @@ resource "azurerm_service_plan" "serverfarm" {
 
 resource "azurerm_log_analytics_workspace" "workspace" {
   count               = var.create_law ? 1 : 0
-  name                = "log-${var.app_base_name}"
+  name                = "${var.app_base_name}-law"
   resource_group_name = var.resource_group_name
   location            = var.location
   tags                = var.additional_tags
@@ -49,7 +49,7 @@ resource "azurerm_log_analytics_workspace" "workspace" {
 }
 
 resource "azurerm_application_insights" "insights" {
-  name                = "appi-${var.app_base_name}"
+  name                = "${var.app_base_name}-appi"
   resource_group_name = var.resource_group_name
   location            = var.location
   tags                = var.additional_tags
