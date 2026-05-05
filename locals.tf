@@ -1,6 +1,6 @@
 
 locals {
-  function_app_name = "func-${var.app_base_name}"
+  function_app_name = "${var.app_base_name}-func"
 
   storage_account_name      = var.storage_account_name != null ? var.storage_account_name : lower(substr(replace(var.app_base_name, "-", ""), 0, 18))
   deployment_container_name = "deployment"
